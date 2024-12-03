@@ -106,17 +106,22 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateWanderTarget() //追跡モードオフのとき動く
+    private IEnumerator UpdateWanderTarget()
     {
         while (true)
         {
-            if (!isTracking) // 追跡モードがオフのときだけ目標地点を更新
+            if (!isTracking) // うろうろモードのとき
             {
+                // 次の目標地点を設定
                 Vector2 randomPoint = Random.insideUnitCircle * wanderRadius;
                 wanderTarget = new Vector3(transform.position.x + randomPoint.x, transform.position.y, transform.position.z + randomPoint.y);
+                Vector3 direction = (wanderTarget - transform.position).normalized;
+                RotateTowards(direction);
+                rb.AddForce(Vector3.up * (jumpForce) * Time.deltaTime, ForceMode.Impulse);
             }
-            yield return new WaitForSeconds(wanderInterval);
+            yield return new WaitForSeconds(wanderInterval); // 目標地点の更新間隔
         }
     }
+
 
 }
