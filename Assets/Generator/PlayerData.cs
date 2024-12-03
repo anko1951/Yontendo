@@ -27,7 +27,7 @@ public class PlayerData : MonoBehaviour
     public GameData gameData;
 
     private float hungry;
-     private Dictionary<string, Stack<Food>> foodInventory = new Dictionary<string, Stack<Food>>();
+    private Dictionary<string, Stack<Food>> foodInventory = new Dictionary<string, Stack<Food>>();
 
     private void Awake()
     {
@@ -64,6 +64,7 @@ public class PlayerData : MonoBehaviour
     public int GetHungryDefaultLv() => hungryDefaultLv;
     public int GetGravityLv() => antiGravityLv;
     public int GetHungerLv() => hungerMaxLv;
+    public float GetHungry() => hungry;
 
     // 各LvをインクリメントするLvUpメソッド
     public void LvUpSpeed() => speedLv++;
