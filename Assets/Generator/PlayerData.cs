@@ -8,9 +8,9 @@ public class PlayerData : MonoBehaviour
    
     public static PlayerData Instance { get; private set; } // シングルトンインスタンスのプロパティ
 
-    [SerializeField] private float addSpeed = 5.0f;
+    [SerializeField] private float addSpeed = 3.0f;
     [SerializeField] private float dashSpeed = 10.0f;
-    [SerializeField] private float addJump = 1500.0f;
+    [SerializeField] private float addJump = 50.0f;
     [SerializeField] private float antiGravity = 1.0f;
     [SerializeField] private float hungryDefault = 100.0f;
     [SerializeField] private float hungryMax = 200.0f;
