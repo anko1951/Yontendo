@@ -27,6 +27,7 @@ public class PlayerData : MonoBehaviour
     public GameData gameData;
 
     private float hungry;
+    private bool isDead;
     private Dictionary<string, Stack<Food>> foodInventory = new Dictionary<string, Stack<Food>>();
 
     private void Awake()
@@ -56,7 +57,7 @@ public class PlayerData : MonoBehaviour
     public float GetHungryDefault() => hungryDefault * hungryDefaultLv;
     public float GetHungryMax() => hungryMax * hungerMaxLv;
 
-    // Getterメソッド（int）
+    // Getterメソッド
     public int GetSpeedLv() => speedLv;
     public int GetJumpLv() => jumpLv;
     public int GetDashLv() => dashLv;
@@ -65,6 +66,10 @@ public class PlayerData : MonoBehaviour
     public int GetGravityLv() => antiGravityLv;
     public int GetHungerLv() => hungerMaxLv;
     public float GetHungry() => hungry;
+    public bool GetIsDead() => isDead;
+
+    // Setterメソッド
+    public void SetIsDead(bool boo) => this.isDead = boo ;
 
     // 各LvをインクリメントするLvUpメソッド
     public void LvUpSpeed() => speedLv++;
@@ -123,8 +128,9 @@ public class PlayerData : MonoBehaviour
     //死んだときの動作
     public void Died(){
         GameObject gameDirector = GameObject.FindGameObjectWithTag("GameDirector"); // GameDirector を探す
-        if (gameDirector != null){
+        if (gameDirector != null && !isDead){
             ChangeScoreAllFoods();
+            isDead = true;
             gameDirector.SendMessage("PlayerDiedScene");
         }else{
             Debug.LogError("GameDirector が見つかりません");

@@ -13,10 +13,22 @@ public class GameDirector : MonoBehaviour
     string resultSceneName;
 
     public GameData gameData;
+    private PlayerData playerData;
+
+    void Awake()
+    {
+        GameObject playerDataObj = GameObject.FindWithTag("PlayerData"); // PlayerDataのタグを持つオブジェクトを取得
+        if (playerDataObj != null)
+        {
+            playerData = playerDataObj.GetComponent<PlayerData>(); // PlayerDataスクリプトを取得
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerData.SetIsDead(false);
         gameData.isDied = false;
         gameData.resultScore = 0;
     }

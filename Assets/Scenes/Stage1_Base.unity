@@ -1625,7 +1625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foods: []
   enemys: []
-  resultSceneName: SelectDifficult
+  resultSceneName: ResultScene
   gameData: {fileID: 11400000, guid: 08b4a8b058e62df489735b40d9cfa406, type: 2}
 --- !u!114 &621284964
 MonoBehaviour:

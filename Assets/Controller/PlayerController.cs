@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour {
         float moveInput = Input.GetAxis("Vertical"); // W/S または ↑/↓
         if (moveInput != 0)
         {
+            Debug.Log(moveInput);
             if (isDash)
             {
                 if (playerData != null)
