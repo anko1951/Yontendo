@@ -102,13 +102,6 @@ public class EnemyController : MonoBehaviour
         {
             bool previousTracking = isTracking;
             isTracking = !isTracking; // フラグを切り替え
-
-            // 追跡モードがオフに切り替わった場合
-            if (previousTracking && !isTracking)
-            {
-                //isReturning = true; // 元の位置に戻るフラグをオン
-            }
-
             yield return new WaitForSeconds(0.2f); // 0.2秒待機
         }
     }
