@@ -7,21 +7,23 @@ public class EnemyController : MonoBehaviour
   [SerializeField]
     GameObject Player; // ターゲットとなるプレイヤーオブジェクト
     [SerializeField]
-    float farm = 5.0f; // 距離の閾値
+    float farm = 8.0f; // 距離の閾値
     [SerializeField]
-    float Speed = 2.0f; // 移動速度
+    float Speed = 1.4f; // 移動速度
     [SerializeField]
-    float jumpForce = 30.0f;
-    //[SerializeField]
-    //float returnSpeed = 1.5f; // 元の位置に戻る速度
+    float jump = 17.2f;
+    [SerializeField]
+    float wanderRadius = 3.0f; // うろうろする範囲の半径
+    [SerializeField]
+    float wanderInterval = 1.0f; // うろうろ時の移動頻度
     [SerializeField]
     float rotationTolerance = 1.0f; // 角度の許容範囲
 
+    private float jumpForce;
     private Rigidbody rb; // Rigidbodyを使用するための変数
     private bool isTracking = false; // 追跡モードのオンオフフラグ
-    private Vector3 startPosition; // オブジェクトの初期位置
-    //private bool isReturning = false; // 元の位置に戻るフラグ
     private PlayerData playerDataScript; // PlayerDataスクリプトの参照
+    private Vector3 wanderTarget; // うろうろ時の目標地点
 
     void Awake()
     {
@@ -41,12 +43,11 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        // 初期位置を保存
-        startPosition = transform.position;
+        jumpForce = jump * rb.mass;
 
         // コルーチンを開始
         StartCoroutine(ToggleTracking());
+        StartCoroutine(UpdateWanderTarget());
     }
 
     void FixedUpdate()
@@ -75,20 +76,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            /*
-            // 元の位置に戻る動作
-            if (isReturning)
-            {
-                Vector3 direction = (startPosition - transform.position).normalized;
-                rb.MovePosition(transform.position + direction * returnSpeed * Time.fixedDeltaTime);
-
-                // 元の位置に到達したらフラグをオフ
-                if (Vector3.Distance(transform.position, startPosition) < 0.1f)
-                {
-                    isReturning = false;
-                }
-            }
-            */
+           Vector3 direction = (wanderTarget - transform.position).normalized;
+           rb.MovePosition(transform.position + direction * Speed * Time.fixedDeltaTime);
         }
     }
 
@@ -121,6 +110,19 @@ public class EnemyController : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.2f); // 0.2秒待機
+        }
+    }
+
+    private IEnumerator UpdateWanderTarget() //追跡モードオフのとき動く
+    {
+        while (true)
+        {
+            if (!isTracking) // 追跡モードがオフのときだけ目標地点を更新
+            {
+                Vector2 randomPoint = Random.insideUnitCircle * wanderRadius;
+                wanderTarget = new Vector3(transform.position.x + randomPoint.x, transform.position.y, transform.position.z + randomPoint.y);
+            }
+            yield return new WaitForSeconds(wanderInterval);
         }
     }
 

@@ -33,6 +33,8 @@ public class PlayerData : MonoBehaviour
     {
         if (Instance == null)
         {
+            // Transform の親を解除してルートに移動
+            transform.SetParent(null);
             Instance = this;
             DontDestroyOnLoad(gameObject); // オブジェクトをシーン間で維持
         }
