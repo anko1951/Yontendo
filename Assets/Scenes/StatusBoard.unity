@@ -620,7 +620,7 @@ MonoBehaviour:
   - {fileID: 1035549264}
   - {fileID: 877104293}
   - {fileID: 1393192290}
-  beforeSceneName: 
+  beforeSceneName: SelectDifficult
   intarval: 0.3
 --- !u!1 &406280730
 GameObject:
