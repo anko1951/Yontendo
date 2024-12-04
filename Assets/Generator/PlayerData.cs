@@ -124,6 +124,15 @@ public class PlayerData : MonoBehaviour
         Debug.Log(gameData.resultScore);
     }
 
+    //空腹度回復系メソッド
+    public void FullCharge(){
+        this.hungry = GetHungryDefault();
+    }
+
+    public void EatCharge(float foodHeal){
+        this.hungry += foodHeal;
+    }
+
 
     //死んだときの動作
     public void Died(){
@@ -139,7 +148,7 @@ public class PlayerData : MonoBehaviour
 
     //一番最後に実行するアップデート
     private void LateUpdate(){
-        if(this.hungry <= 0){
+        if(this.hungry <= 0 && !isDead){
             this.Died();
         }
     }

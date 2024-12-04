@@ -7,6 +7,8 @@ public class SceneDirctor : MonoBehaviour
 {
     [SerializeField]
     string NextSceneName;
+    [SerializeField]
+    string beforeSceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +21,17 @@ public class SceneDirctor : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             ChangeScene();
         }
+
+        if(Input.GetKeyDown(KeyCode.Z)){
+            ReChangeScene();
+        }
     }
 
     public void ChangeScene(){
         SceneManager.LoadScene(NextSceneName);
+    }
+
+    public void ReChangeScene(){
+        SceneManager.LoadScene(beforeSceneName);
     }
 }

@@ -29,6 +29,7 @@ public class GameDirector : MonoBehaviour
     void Start()
     {
         playerData.SetIsDead(false);
+        playerData.EatCharge(1);
         gameData.isDied = false;
         gameData.resultScore = 0;
     }
