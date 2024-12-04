@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private float rotationSpeed = 700f; // 回転速度
     [SerializeField]
     private float minMass = 10f; // 最小重量
+    
 
     private PlayerData playerData; // カスタムスクリプト(PlayerData)
     private Rigidbody rb;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 
     private float moveSpeed = 0f;
     private bool isDash = false;
-    //private bool isJump = false;
+    private bool isGround = false;
 
     void Awake()
     {
@@ -45,7 +46,6 @@ public class PlayerController : MonoBehaviour {
             dashSpeed = playerData.GetDashSpeed();
             addJump = playerData.GetAddJump();
             antiGravity = playerData.GetAntiGravity();
-            Debug.Log(addSpeed+","+dashSpeed+",!!!"+addJump+"!!!,"+antiGravity);
 
             if (antiGravity > 0)
             {
@@ -59,9 +59,6 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if(transform.position.y < 0.6){
-            //isJump = false ;
-        }
         // LShiftで加速
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -114,13 +111,12 @@ public class PlayerController : MonoBehaviour {
 
 
         // スペースキーでジャンプ
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             if (playerData != null)
             {
                 playerData.useJump();
             }
-            //if(isJump){ return ;}
             Jump();
         }
 
@@ -137,9 +133,7 @@ public class PlayerController : MonoBehaviour {
 
     void Jump()
     {
-        //if(isJump){ return ;}
         // ジャンプするための力を加える
-        //isJump = true ;
         rb.AddForce(Vector3.up * (jumpForce + addJump), ForceMode.Impulse);
     }
 
@@ -154,7 +148,7 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
-    // 食べ物だったら削除してplayerDataに入れる
+    // 食べ物だったら見えなくしてplayerDataに入れる
     private void OnTriggerEnter(Collider other)
     {
         // 食べ物オブジェクトか確認
@@ -168,6 +162,22 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive(false);
 
             Debug.Log($"Picked up a {food.Type}!");
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Terrain"))
+        {
+            isGround = true;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Terrain"))
+        {
+            isGround = false;
         }
     }
 }

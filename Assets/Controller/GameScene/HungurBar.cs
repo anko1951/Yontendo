@@ -23,7 +23,6 @@ public class HungerBar : MonoBehaviour
         if (playerData != null && fillImage != null)
         {
             targetFillAmount = Mathf.Clamp01(playerData.GetHungry()/playerData.GetHungryMax());
-            Debug.Log(targetFillAmount);
 
             // SmoothDampでFillAmountを滑らかに変化
             fillImage.fillAmount = Mathf.SmoothDamp(
