@@ -81,10 +81,10 @@ public class PlayerData : MonoBehaviour
     public void LvUpHunger() => hungerMaxLv++;
 
     // Use系
-    public void useDush(){}
+    public void useDush(){ this.hungry -= 0.1f ;}
     public void useJump(){ this.hungry -= 10.0f; }
-    public void useWalk(){}
-    public void UseHungry(){}
+    public void useWalk(){ this.hungry -= 0.01f; }
+    public void UseHungry(){ this.hungry -= 0.05f; }
 
 
     // 食べ物を所持するためのメソッド
