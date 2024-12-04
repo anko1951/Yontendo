@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour {
             dashSpeed = playerData.GetDashSpeed();
             addJump = playerData.GetAddJump();
             antiGravity = playerData.GetAntiGravity();
+            Debug.Log(addSpeed+","+dashSpeed+",!!!"+addJump+"!!!,"+antiGravity);
 
             if (antiGravity > 0)
             {
@@ -77,7 +78,6 @@ public class PlayerController : MonoBehaviour {
         float moveInput = Input.GetAxis("Vertical"); // W/S または ↑/↓
         if (moveInput != 0)
         {
-            Debug.Log(moveInput);
             if (isDash)
             {
                 if (playerData != null)

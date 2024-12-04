@@ -32,13 +32,7 @@ public class SelectDirector : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if(playerData != null)
-        {
-            playerData.FullCharge();
-        }
-    }
+    void Start(){}
 
     // Update is called once per frame
     void Update()
@@ -67,6 +61,10 @@ public class SelectDirector : MonoBehaviour
 
     //選択したシーンへ
     void ChangeScene(){
+        if(playerData != null)
+        {
+            playerData.FullCharge();
+        }
         SceneManager.LoadScene(stages[selectNow]);
     }
 
