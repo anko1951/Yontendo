@@ -2441,7 +2441,7 @@ MonoBehaviour:
   hungryDefault: 100
   hungryMax: 200
   speedLv: 1
-  jumpLv: 3
+  jumpLv: 1
   dashLv: 1
   antiGravityLv: 1
   hungryDefaultLv: 1

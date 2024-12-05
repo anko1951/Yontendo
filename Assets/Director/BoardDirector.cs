@@ -17,11 +17,14 @@ public class BoardDirector : MonoBehaviour
     string beforeSceneName;
     [SerializeField]
     float intarval;// 操作間隔
+    [SerializeField]
+    GameObject[] imageSetter;
 
 
     private PlayerData playerData;
     private int selectNow = 0;
     private int showBoard = 0;
+    private int needUp = 0;
     private float timer;
 
     void Awake()
@@ -55,25 +58,69 @@ public class BoardDirector : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.Space)){
-            if(showBoard != 2 && selectNow != 4)
+            if(selectNow == 5)
+            {
+                switch(needUp){
+                    case 0:
+                        playerData.LvUpDash();
+                        Debug.Log(playerData.GetDashLv()*100);
+                        imageSetter[needUp].GetComponent<SetActiveImage>().SetImage(needUp);
+                        break;
+                    case 1:
+                        playerData.LvUpHungryDefault();
+                        imageSetter[needUp].GetComponent<SetActiveImage>().SetImage(needUp);
+                        break;
+                    case 2:
+                        playerData.LvUpJump();
+                        imageSetter[needUp].GetComponent<SetActiveImage>().SetImage(needUp);
+                        break;
+                    default: break;
+                }
+                DefaultBoard();
+            }
+            else if(selectNow == 4)// No選択
+            {
+                DefaultBoard();
+            }
+            else if(selectNow == 3)
             {
                 showBoard++;
                 showBoard = Mathf.Clamp(showBoard,0,boards.Length);
                 boards[showBoard].gameObject.SetActive(true);
+                StepSelector(5);
             }
             else
             {
-                boards[2].gameObject.SetActive(false);
-                boards[1].gameObject.SetActive(false);
-                showBoard = 0;
+                needUp = selectNow ;
+                showBoard++;
+                showBoard = Mathf.Clamp(showBoard,0,boards.Length);
+                boards[showBoard].gameObject.SetActive(true);
+                StepSelector(3);
             }
         }
         
-        if(Input.GetKeyDown(KeyCode.Z)){
+        if(Input.GetKeyDown(KeyCode.Z) && showBoard != 2){
             ReChangeScene();
         }
     }
 
+    //デフォルト画面に戻す処理
+    void DefaultBoard(){
+        needUp = 0;
+        boards[2].gameObject.SetActive(false);
+        boards[1].gameObject.SetActive(false);
+        showBoard = 0;
+        StepSelector(0);
+        selectNow = 0;
+    }
+
+    //受け取った値でカーソルを動かすやつ
+    void StepSelector(int step){
+        pointers[selectNow].gameObject.SetActive(false);
+        selectNow = step ;
+        pointers[step].gameObject.SetActive(true);
+    }
+    
     //一つ前のシーンへ
     void ReChangeScene(){
         SceneManager.LoadScene(beforeSceneName);

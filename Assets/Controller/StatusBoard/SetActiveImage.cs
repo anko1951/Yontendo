@@ -9,7 +9,7 @@ public class SetActiveImage : MonoBehaviour
     [SerializeField]
     private Image[] images; // Image配列
     [SerializeField]
-    private int statusNumber;
+    private int selectStatus;
 
     private PlayerData playerData;
 
@@ -29,6 +29,10 @@ public class SetActiveImage : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        SetImage(selectStatus);
+    }
+
+    public void SetImage(int statusNumber){
         if (playerData == null)
         {
             Debug.LogError("PlayerDataが設定されていません。処理を中断します。");
@@ -36,6 +40,9 @@ public class SetActiveImage : MonoBehaviour
         }
 
         int nowLv = 0;
+        images[0].gameObject.SetActive(false);
+        images[1].gameObject.SetActive(false);
+        images[2].gameObject.SetActive(false);// 初期化処理
         switch (statusNumber)
         {
             case 0:
