@@ -34,6 +34,10 @@ public class BoardDirector : MonoBehaviour
         {
             playerData = playerDataObj.GetComponent<PlayerData>(); // PlayerDataスクリプトを取得
         }
+        else
+        {
+            FindOutPlayerData();
+        }
     }
 
     // Start is called before the first frame update
@@ -126,4 +130,9 @@ public class BoardDirector : MonoBehaviour
         SceneManager.LoadScene(beforeSceneName);
     }
 
+    //強制タイトル
+    private void FindOutPlayerData(){
+        Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
+        SceneManager.LoadScene("Title");
+    }
 }

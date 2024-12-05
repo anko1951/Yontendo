@@ -22,6 +22,10 @@ public class GameDirector : MonoBehaviour
         {
             playerData = playerDataObj.GetComponent<PlayerData>(); // PlayerDataスクリプトを取得
         }
+        else
+        {
+            FindOutPlayerData();
+        }
     }
 
 
@@ -49,6 +53,12 @@ public class GameDirector : MonoBehaviour
     public void AreaClearScene(){
         gameData.isDied = false;
         SceneManager.LoadScene(resultSceneName);
+    }
+
+    //強制タイトル
+    private void FindOutPlayerData(){
+        Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
+        SceneManager.LoadScene("Title");
     }
 
 }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SetActiveImage : MonoBehaviour
@@ -22,7 +24,7 @@ public class SetActiveImage : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("PlayerDataオブジェクトが見つかりませんでした！");
+            FindOutPlayerData();
         }
     }
 
@@ -35,7 +37,7 @@ public class SetActiveImage : MonoBehaviour
     public void SetImage(int statusNumber){
         if (playerData == null)
         {
-            Debug.LogError("PlayerDataが設定されていません。処理を中断します。");
+            FindOutPlayerData();
             return; // エラー時は処理を中断
         }
 
@@ -61,5 +63,11 @@ public class SetActiveImage : MonoBehaviour
 
         // 対応するImageのGameObjectをアクティブ化
         images[temp].gameObject.SetActive(true);
+    }
+
+    //強制タイトル
+    private void FindOutPlayerData(){
+        Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
+        SceneManager.LoadScene("Title");
     }
 }

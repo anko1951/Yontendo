@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HungerBar : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class HungerBar : MonoBehaviour
         {
             playerData = playerDataObj.GetComponent<PlayerData>(); // PlayerDataスクリプトを取得
         }
+        else{
+            FindOutPlayerData();
+        }
     }
 
     void Update()
@@ -29,5 +33,11 @@ public class HungerBar : MonoBehaviour
                 fillImage.fillAmount, targetFillAmount, ref currentVelocity, smoothTime
             );
         }
+    }
+
+    //強制タイトル
+    private void FindOutPlayerData(){
+        Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
+        SceneManager.LoadScene("Title");
     }
 }

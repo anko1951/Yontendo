@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("PlayerDataタグを持つオブジェクトが見つかりません");
+            FindOutPlayerData();
         }
     }
 
@@ -123,5 +124,10 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //強制タイトル
+    private void FindOutPlayerData(){
+        Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
+        SceneManager.LoadScene("Title");
+    }
 
 }

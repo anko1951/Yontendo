@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 	[SerializeField]
@@ -32,6 +33,10 @@ public class PlayerController : MonoBehaviour {
         if (playerDataObj != null)
         {
             playerData = playerDataObj.GetComponent<PlayerData>(); // PlayerDataスクリプトを取得
+        }
+        else
+        {
+            FindOutPlayerData();
         }
     }
 
@@ -179,5 +184,11 @@ public class PlayerController : MonoBehaviour {
         {
             isGround = false;
         }
+    }
+
+    //強制タイトル
+    private void FindOutPlayerData(){
+        Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
+        SceneManager.LoadScene("Title");
     }
 }
