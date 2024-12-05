@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class TitleController : MonoBehaviour
 {
+    [SerializeField]
+    GameObject sceneDirector;
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene("Main");
+        sceneDirector.SendMessage("ChangeScene");
     }
 }
