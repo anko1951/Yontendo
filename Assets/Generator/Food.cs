@@ -5,7 +5,7 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     [SerializeField]
-    public string Type; // 食べ物の種類（例: "Apple", "Banana")
+    public string Type = "Apple"; // 食べ物の種類（例: "Apple", "Banana")
     [SerializeField]
     int score;
 
