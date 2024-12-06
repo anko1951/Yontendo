@@ -34,4 +34,5 @@ public class SceneDirctor : MonoBehaviour
     public void ReChangeScene(){
         SceneManager.LoadScene(beforeSceneName);
     }
+    
 }
