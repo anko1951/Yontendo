@@ -1215,6 +1215,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2343697429372878434, guid: a5fcadbe57b5feb49bb48b8194c86c94, type: 3}
+      propertyPath: beforeSceneName
+      value: OgawaHouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343697429372878434, guid: a5fcadbe57b5feb49bb48b8194c86c94, type: 3}
       propertyPath: images.Array.size
       value: 3
       objectReference: {fileID: 0}

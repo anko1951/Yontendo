@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d6daf5daf2fe44fa8e46cd9a13d82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: SelectDifficult
+  NextSceneName: OgawaHouse
   beforeSceneName: Title
 --- !u!4 &2144160501
 Transform:
