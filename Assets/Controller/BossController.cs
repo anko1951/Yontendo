@@ -31,7 +31,7 @@ public class BossController : MonoBehaviour
         // 縮小が終了したらスケールを固定
         if (elapsedTime >= shrinkDuration)
         {
-            transform.localScale = minScale;
+            Destroy(gameObject);
         }
     }
 }
