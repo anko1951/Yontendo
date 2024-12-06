@@ -1230,6 +1230,10 @@ PrefabInstance:
       propertyPath: images.Array.data[2]
       value: 
       objectReference: {fileID: 1060520203}
+    - target: {fileID: 2343697429372878434, guid: a5fcadbe57b5feb49bb48b8194c86c94, type: 3}
+      propertyPath: stages.Array.data[2]
+      value: StageLast_Base
+      objectReference: {fileID: 0}
     - target: {fileID: 3794495449638312769, guid: a5fcadbe57b5feb49bb48b8194c86c94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
