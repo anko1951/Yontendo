@@ -24,7 +24,7 @@ public class KonoeController : MonoBehaviour
 
     private bool isBattleStart = false;
 
-    void Start()
+    void Awake()
     {
         // Rigidbodyコンポーネントの取得
         rb = GetComponent<Rigidbody>();
