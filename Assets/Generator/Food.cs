@@ -26,4 +26,16 @@ public class Food : MonoBehaviour
         Destroy(gameObject); //食べ物オブジェクトを削除
         return this.score;
     }
+
+    private void OnCollisionEnter(Collision other) {
+        PlayerController plC = other.gameObject.GetComponent<PlayerController>();
+        if(plC != null){
+            Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+            Collider cd = gameObject.GetComponent<Collider>();
+
+            rb.isKinematic = true ;
+            rb.useGravity = false ;
+            cd.isTrigger = true;
+        }
+    }
 }
