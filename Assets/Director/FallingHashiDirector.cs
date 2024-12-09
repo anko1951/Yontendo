@@ -8,6 +8,10 @@ public class FallingHashiDirector : MonoBehaviour
     private GameObject[] sakus;
     private GameObject[] hashes;
 
+    [SerializeField] 
+    GameObject Boss;
+    [SerializeField]
+    GameObject[] Konoe;
 
     private float time ;
     private float setTime = 0.5f;
@@ -36,6 +40,7 @@ public class FallingHashiDirector : MonoBehaviour
             foreach (GameObject hashi in hashes){
                 Destroy(hashi);
             }
+            CallIsBattle();
             Destroy(gameObject);
         }
 
@@ -74,6 +79,15 @@ public class FallingHashiDirector : MonoBehaviour
             time = 0 ;
             isDelete = true ;
             Destroy(gameObject.GetComponent<BoxCollider>());
+        }
+    }
+
+    void CallIsBattle(){
+        BossController bossC = Boss.GetComponent<BossController>();
+        bossC.SetIsBattleStart();
+        for(int i = 0 ; i < Konoe.Length ; i++ ){
+            KonoeController konoeController = Konoe[i].GetComponent<KonoeController>();
+            konoeController.SetIsBattleStart();
         }
     }
 }
