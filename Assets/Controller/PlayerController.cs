@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     private PlayerData playerData; // カスタムスクリプト(PlayerData)
     private Rigidbody rb;
+    private Animator animator;
 
     /* ここから playerData 参照ステータス */
     private float addSpeed = 0f;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour {
     {
         // Rigidbodyコンポーネントを取得
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
 		
         if (playerData != null)
         {
@@ -80,10 +82,13 @@ public class PlayerController : MonoBehaviour {
         float moveInput = Input.GetAxis("Vertical"); // W/S または ↑/↓
         if (moveInput != 0)
         {
+            animator.SetBool("Walk",true);
             if (isDash)
             {
                 if (playerData != null)
                 {
+                    animator.SetBool("Run",true);
+                    animator.SetBool("Walk",false);
                     playerData.useDush();
                 }
             }
@@ -91,9 +96,14 @@ public class PlayerController : MonoBehaviour {
             {
                 if (playerData != null)
                 {
+                    animator.SetBool("Run",false);
                     playerData.useWalk();
                 }
             }
+        }
+        else
+        {
+            animator.SetBool("Walk",false);
         }
 
         Vector3 moveDirection = transform.forward * moveInput * moveSpeed * Time.deltaTime;
@@ -120,14 +130,19 @@ public class PlayerController : MonoBehaviour {
         {
             if (playerData != null)
             {
+                animator.SetBool("Jump",true);
                 playerData.useJump();
             }
             Jump();
         }
+        else
+        {
+            animator.SetBool("Jump",false);
+        }
 
         /*ここから食べる系*/
         // Zを押すと"Apple"を食べる
-        if (Input.GetKeyDown(KeyCode.Z)){
+        if (Input.GetKeyDown(KeyCode.X)){
             Food food = playerData.EatFood("Apple");
             if (food != null){
                 food.Consume();
@@ -172,7 +187,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("Hashi"))
         {
             isGround = true;
         }
@@ -180,7 +195,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("Hashi"))
         {
             isGround = false;
         }

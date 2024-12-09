@@ -39,6 +39,10 @@ public class EnemyController : MonoBehaviour
         {
             FindOutPlayerData();
         }
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null){
+            Player = playerObject;
+        }
     }
 
     void Start()
@@ -54,6 +58,8 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         if (Player == null) return;
+
+        rb.useGravity = !rb.useGravity;
 
         if (isTracking)
         {
