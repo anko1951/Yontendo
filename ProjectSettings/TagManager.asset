@@ -8,6 +8,9 @@ TagManager:
   - PlayerData
   - Enemy
   - Terrain
+  - Hashi
+  - Saku
+  - MayDelete
   layers:
   - Default
   - TransparentFX

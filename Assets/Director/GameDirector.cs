@@ -33,7 +33,6 @@ public class GameDirector : MonoBehaviour
     void Start()
     {
         playerData.SetIsDead(false);
-        playerData.EatCharge(1);
         gameData.isDied = false;
         gameData.resultScore = 0;
     }
@@ -47,6 +46,7 @@ public class GameDirector : MonoBehaviour
     public void PlayerDiedScene(){
         gameData.isDied = true;
         gameData.deathCount++;
+        playerData.EatCharge(1);
         SceneManager.LoadScene(resultSceneName);
     }
 
@@ -59,6 +59,11 @@ public class GameDirector : MonoBehaviour
     private void FindOutPlayerData(){
         Debug.LogWarning("PlayerDataが見つかりませんでした！Titleへ戻ります。");
         SceneManager.LoadScene("Title");
+    }
+
+    public void BeforeScene(){
+        playerData.EatCharge(1);
+        SceneManager.LoadScene("OgawaHouse");
     }
 
 }
