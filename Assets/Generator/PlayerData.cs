@@ -43,8 +43,8 @@ public class PlayerData : MonoBehaviour
         {
             Destroy(gameObject); // 既に存在するインスタンスがある場合、重複するオブジェクトを破棄
         }
-        gameData.lifeMax = 10000 ;
-        gameData.life = 10000 ;
+        gameData.lifeMax = 100 ;
+        gameData.life = 100 ;
         gameData.isClear = false;
     }
 

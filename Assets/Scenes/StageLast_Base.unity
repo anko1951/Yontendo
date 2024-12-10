@@ -2365,6 +2365,7 @@ MonoBehaviour:
   minScale: {x: 0.1, y: 0.1, z: 0.1}
   gameData: {fileID: 11400000, guid: 08b4a8b058e62df489735b40d9cfa406, type: 2}
   NextSceneName: ResultScene
+  Generator: {fileID: 1120161055}
 --- !u!1001 &1247431228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3010,6 +3011,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4722946675938825150, guid: 05c58cb36af7f6b438d13f2133ee839d, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1200670798}
     - target: {fileID: 7990673429157636127, guid: 05c58cb36af7f6b438d13f2133ee839d, type: 3}
       propertyPath: m_Name
       value: Slime_01_Viking

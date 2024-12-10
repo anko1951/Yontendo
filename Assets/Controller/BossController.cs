@@ -14,6 +14,7 @@ public class BossController : MonoBehaviour
     public GameData gameData;
     [SerializeField]
     public string NextSceneName;
+    [SerializeField]
     GameObject Generator;
 
     // 内部状態
