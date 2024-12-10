@@ -1746,6 +1746,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1004495132017584169, guid: de29cb23823a5b042bfc6045c402f638, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4310155924145167770, guid: de29cb23823a5b042bfc6045c402f638, type: 3}
       propertyPath: m_Name
       value: LittleSquirrel_Idle

@@ -9,6 +9,7 @@ public class GameData : ScriptableObject
     public int resultScore;
     public int deathCount;
     public bool isDied;
+    public bool isClear;
     public float life; // パートナーの生命値
     public float lifeMax;
     public float playTime;

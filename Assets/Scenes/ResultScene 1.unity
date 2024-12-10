@@ -860,11 +860,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 544851571955704352, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
       propertyPath: NextSceneName
-      value: OgawaHouse
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 544851571955704352, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
       propertyPath: beforeSceneName
-      value: ResultScene
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2295710724843054214, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,11 +910,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneDirector
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 544851571955704352, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3949806257830683596, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5797205453783110340}
   m_SourcePrefab: {fileID: 100100000, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
+--- !u!1 &5797205453783110339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3949806257830683596, guid: c899c68c54825bd4fbc9afce30058b26, type: 3}
+  m_PrefabInstance: {fileID: 5797205453783110338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5797205453783110340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797205453783110339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfa444972d999740bb316be37f396a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: 08b4a8b058e62df489735b40d9cfa406, type: 2}
+  NextSceneName: OgawaHouse
+  ClearSceneName: ClearScene
+  BatEndSceneName: BatEndScene
+  beforeSceneName: ResultScene
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

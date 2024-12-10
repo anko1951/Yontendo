@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class BossController : MonoBehaviour
     // 最小スケール
     public Vector3 minScale = new Vector3(0.1f, 0.1f, 0.1f);
 
+    public GameData gameData;
     [SerializeField]
+    public string NextSceneName;
     GameObject Generator;
 
     // 内部状態
@@ -41,12 +44,18 @@ public class BossController : MonoBehaviour
         // 縮小が終了したらスケールを固定
         if (elapsedTime >= shrinkDuration)
         {
+            gameData.isClear = true ;
             Destroy(gameObject);
+            ChangeScene();
         }
     }
 
     public void SetIsBattleStart(){
         isBattleStart = true ;
         slimeGenerator.enabled = true;
+    }
+
+    public void ChangeScene(){
+        SceneManager.LoadScene(NextSceneName);
     }
 }
