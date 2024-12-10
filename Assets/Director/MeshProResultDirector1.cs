@@ -13,6 +13,7 @@ public class MeshProTotalDirector : MonoBehaviour
 
     private void Awake(){
         gameData.playTime = 0;
+        gameData.playerScore = gameData.resultScore ;
     }
 
     private void Start()
@@ -20,13 +21,15 @@ public class MeshProTotalDirector : MonoBehaviour
         if (scoreText != null && gameData != null)
         {
             // PlayerDataからスコアを取得して表示
-            float score = gameData.playerScore;
+            float score = gameData.resultScore;
             scoreText.text = ""+score; // 小数点以下2桁で表示
         }
         else
         {
             Debug.LogError("scoreTextまたはplayerDataが設定されていません");
         }
+
+        gameData.resultScore = 0 ;
     }
 
     //強制タイトル
