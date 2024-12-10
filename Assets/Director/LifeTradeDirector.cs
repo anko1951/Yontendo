@@ -48,10 +48,14 @@ public class LifeTradeDirector : MonoBehaviour
             float cutScore = (gameData.lifeMax - gameData.life) * eatScore;
             gameData.resultScore -= (int)cutScore;
             float damage;
-            gameData.life = gameData.lifeMax ;
             if(gameData.resultScore < 0){
                 damage = gameData.resultScore * -1 ;
-                gameData.life -= damage;
+                gameData.life = gameData.lifeMax - (int)damage;
+                gameData.resultScore = 0 ;
+            }
+            else
+            {
+                gameData.life = gameData.lifeMax ;
             }
             float targetFillAmount = Mathf.Clamp01(gameData.life/gameData.lifeMax);
 

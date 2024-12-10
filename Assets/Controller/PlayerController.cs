@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 
         /*ここから食べる系*/
         // Zを押すと"Apple"を食べる
-        if (Input.GetKeyDown(KeyCode.X)){
+        if (Input.GetKeyDown(KeyCode.E)){
             Food food = playerData.EatFood("Apple");
             if (food != null){
                 food.Consume();
