@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     float wanderInterval = 1.0f; // うろうろ時の移動頻度
     [SerializeField]
     float rotationTolerance = 1.0f; // 角度の許容範囲
+    [SerializeField]
+    bool isAntiGravity = true;
 
     private float jumpForce;
     private Rigidbody rb; // Rigidbodyを使用するための変数
@@ -58,8 +60,10 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         if (Player == null) return;
-
-        rb.useGravity = !rb.useGravity;
+        
+        if(isAntiGravity){
+            rb.useGravity = !rb.useGravity;
+        }
 
         if (isTracking)
         {

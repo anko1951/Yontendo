@@ -11,6 +11,7 @@ TagManager:
   - Hashi
   - Saku
   - MayDelete
+  - HoleDirector
   layers:
   - Default
   - TransparentFX
